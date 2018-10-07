@@ -32,6 +32,7 @@ f.close()
 
 
 #Se ejecutan comandos de git, para actualizar la informacion
-#os.system('cd ~/Estufa')
-#os.system('git add -A')
-#os.system('git commit -m "%s"'%(fyh))
+os.system('cd ~/Estufa')
+os.system('git add -A')
+os.system('git commit -m "%s"'%(fyh))
+os.system('git push origin gh-pages')
