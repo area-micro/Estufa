@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 # Autor    :  Villarreal Luciano
 # Creditos :  Villarreal Luciano
 
