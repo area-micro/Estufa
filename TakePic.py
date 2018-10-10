@@ -10,7 +10,7 @@ from time import sleep
 
 os.system('./led.py on')
 sleep(5)
-os.system('fswebcam imagen.jpg')
+os.system('fswebcam images/Estufa.jpeg')
 sleep(3)
 os.system('./led.py off')
 
