@@ -1,11 +1,11 @@
-Sat Oct 13 23:28:35 -03 2018
+Sat Oct 13 23:29:21 -03 2018
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 192.168.0.108  netmask 255.255.255.0  broadcast 192.168.0.255
         inet6 fe80::b0f9:f41e:c6c9:42dc  prefixlen 64  scopeid 0x20<link>
         ether 02:81:b9:07:40:86  txqueuelen 1000  (Ethernet)
-        RX packets 11208  bytes 1489840 (1.4 MiB)
+        RX packets 11401  bytes 1510835 (1.4 MiB)
         RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 6656  bytes 1113070 (1.0 MiB)
+        TX packets 6857  bytes 1253228 (1.1 MiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
         device interrupt 38  
 
