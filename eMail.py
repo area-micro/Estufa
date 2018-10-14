@@ -8,13 +8,18 @@ from email.parser import Parser
 import smtplib
 import poplib
 from time import sleep
+import sys
+import os
 
 #datos
+
 password = 'AreaMicro1'
 origen = 'estufa.unsl@gmail.com'
+
 Lista = ["Foto","foto","FOTO","Captura","captura","CAPTURA","Imagen","imagen",
 	"IMAGEN","Enviar foto","enviar foto", "Enviar Foto", "enviar Foto",
-	"ENVIAR FOTO"]
+	"ENVIAR FOTO", "Re: Foto Cultivo Bacteriano", "Re: Foto", "Re: Captura",
+	"Re: foto","Re: FOTO"]
 
 # Se establece conexion con el servidor pop de gmail para ver si hay emails nuevos.
 
@@ -29,6 +34,7 @@ print numero
 j = 0
 if numero != 0:
 	#Se toma la foto
+	os.system("python /home/micro/Estufa/led.py on && sleep 5 && fswebcam /home/micro/Estufa/images/Estufa.jpeg && python /home/micro/Estufa/led.py off")
 
 	#Se establece conexion con smtp.gmail.com
 	server = smtplib.SMTP('smtp.gmail.com',587)
@@ -56,52 +62,23 @@ if numero != 0:
 	 	email = p.parsestr(mensaje)
 
 		#Aqui ya se tienen los datos de forma entendible
-#		print "Mail %d" %j
-#		print "From: "+email["From"]
-#		print "To: "+email["To"]
-#	 	print "Subject: "+email["Subject"]
 
 		if email["Subject"] in Lista:
 
-#		msg = MIMEMultipart()
+			# setup the parameters of the message
 
-
-#		message = ""
-
-		# setup the parameters of the message
-
-#		msg['From'] = origen
 			msg['To'] = email["From"]
-#		msg['Subject'] = "Foto Cultivo Bacteriano"
 
-		#add message body
-		#msg.attach(MIMEText(message, 'plain'))
+			#Adjunto la foto del cultivo bacteriano
 
-
-		#Adjunto la foto del cultivo bacteriano
-			file = open("images/Estufa.jpeg", "rb")
+			file = open("/home/micro/Estufa/images/Estufa.jpeg", "rb")
 			contenido = MIMEImage(file.read())
 			contenido.add_header('Content-Disposition', 'attachment; filename = "Estufa.jpeg"')
 			msg.attach(contenido)
 
-
-		#create server
-#		server = smtplib.SMTP('smtp.gmail.com: 587')
-
-#		server.starttls()
-
-		# Login Credentials for sending the mail
-#		server.login(msg['From'], password)
-
-
-		# send the message via the server.
+			# send the message via the server.
 			server.sendmail(msg['From'], msg['To'], msg.as_string())
 
-#		server.quit()
-			sleep(30)
-#			print "successfully sent email to %s:" % (msg['To'])
-
+		sleep(5)
 	server.quit()
-
 m.quit()
-#print "Finalizado"
